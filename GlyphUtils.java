@@ -96,6 +96,7 @@ public class GlyphUtils{
 
     //If your frames are named frame1, frame2, frame3... You have to use mode 1. If your frames are named frame0001, frame0002, frame0003... You have to use mode 2.
     //Animation intervall is in ms
+    //THIS METHODE JUST PREPARES THE ANIMATION!!! YOU CAN TO RUN IT WITH ANIMATOR.START()
     public static void renderAnimation(GlyphMatrixManager mGM, String resNameWithoutNumber, int numberOfFrames, int mode, Context context, int ANIMATION_INTERVAL, ValueAnimator animation) {
         if (mGM == null) return;
 
