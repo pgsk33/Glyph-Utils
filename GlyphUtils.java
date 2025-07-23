@@ -1,5 +1,3 @@
-package com.gesekus.dothub; //Your package
-
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -10,7 +8,7 @@ import androidx.core.content.ContextCompat;
 import com.nothing.ketchum.*;
 import java.text.DecimalFormat;
 
-public class FramesToAnimation{
+public class GlyphUtils{
     //returns a GlyphMatrixFrame where the foreground is drawn from a resource
     public static GlyphMatrixFrame createFrameOutOfDrawable(Context context, String foregroundResName) {
 
@@ -69,7 +67,7 @@ public class FramesToAnimation{
         }
         return frames;
     }
-
+// Renders an image to the Glyph Matrix.
     public static void renderImageToGlyphMatrix(GlyphMatrixManager mGM, int drawableId, Context context) {
         Bitmap bitmap = drawableToBitmap(context, drawableId);
         GlyphMatrixObject startObject = new GlyphMatrixObject.Builder()
@@ -79,7 +77,7 @@ public class FramesToAnimation{
         renderFrameToGlyphMatrix(mGM, frame);
     }
 
-
+//renders a Glyph Matrix Frame to the Glyph Matrix
     static void renderFrameToGlyphMatrix(GlyphMatrixManager mGM, GlyphMatrixFrame frame) {
         try {
             mGM.setMatrixFrame(frame.render());
@@ -88,6 +86,7 @@ public class FramesToAnimation{
         }
     }
 
+    
     public static Bitmap drawableToBitmap(Context context, int drawableId){
         Drawable drawable = ContextCompat.getDrawable(context, drawableId);
         return GlyphMatrixUtils.drawableToBitmap(drawable);
@@ -95,7 +94,8 @@ public class FramesToAnimation{
 
 
 
-
+    //If your frames are named frame1, frame2, frame3... You have to use mode 1. If your frames are named frame0001, frame0002, frame0003... You have to use mode 2.
+    //Animation intervall is in ms
     public static void renderAnimation(GlyphMatrixManager mGM, String resNameWithoutNumber, int numberOfFrames, int mode, Context context, int ANIMATION_INTERVAL, ValueAnimator animation) {
         if (mGM == null) return;
 
